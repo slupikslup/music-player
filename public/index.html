@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <form action="/upload"  accept-charset="UTF-8" method="post" enctype="multipart/form-data" id='form'>
+      <input type="file" name="media" id='photo'/>
+    </form>
+    
+    <script>
+       photo.onchange = async () => {
+            fetch('/uploadmedia', {
+                method: "POST",
+                headers: localStorage.authToken ? {Authorization: 'Bearer ' + localStorage.authToken} : {},
+                body: new FormData(form)
+            })
+            console.log(new FormData(form))
+        }
+    </script>
+</body>
+</html>
+
+              
